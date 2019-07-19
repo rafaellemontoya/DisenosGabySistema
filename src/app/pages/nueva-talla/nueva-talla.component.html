@@ -1,0 +1,105 @@
+<div class="admin-elements-page">
+  <!-- Start: Content-Wrapper-->
+  <section id="content_wrapper">
+      <!-- Start: Topbar-Dropdown-->
+
+      <!-- Start: Topbar-->
+      <header id="topbar" class="alt">
+        <div class="topbar-left">
+          <ol class="breadcrumb">
+            
+            <li class="crumb-icon"><a routerLink="inicio"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="crumb-link"><a routerLink="/tallas">Tallas</a></li>
+            <li class="crumb-trail">Nueva talla</li>
+          </ol>
+        </div>
+        
+      </header>
+      <!-- Begin: Content-->
+      <section id="content" class="table-layout animated fadeIn">
+        <!-- begin: .tray-center-->
+        <div class="tray tray-center">
+          <div class="mw1000 center-block">
+            <!-- Begin: Content Header-->
+            <div class="content-header">
+              <h2> <b>Nueva talla</b> 
+              </h2>
+              <p class="lead">Llena el formulario para agregar la talla</p>
+            </div>
+            
+  
+  
+            <!-- Begin: Admin Form-->
+            <div class="admin-form">
+              <div  class="panel heading-border">
+                <!-- Panel guardado-->
+                <div [hidden]="!submitted" class="panel-body bg-light animated fadeIn">
+                    
+  
+                <div class="alert alert-success alert-dismissable mb30">
+                    <!-- <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button> -->
+                    <h3 class="mt5">Talla guardada exitosamente!</h3>
+                    <p>Talla añadida con éxito.</p><br>
+                    <div class="element-groups-sm-custom"><a routerLink="/tallas" class="btn btn-white">Continuar</a><button type="button" (click)="submitted=false; heroForm.reset()" class="btn btn-default">nueva talla</button></div>
+                  </div>
+    
+    
+                </div>
+                <!-- Panel formulario-->
+                <div [hidden]="submitted" class="panel-body bg-light">
+                  <form (ngSubmit)="crearElemento()" (keydown.enter)="$event.preventDefault()" #heroForm="ngForm">
+                    <div id="spy1" class="section-divider mb40"><span>Información general</span></div>
+                    <!-- .section-divider-->
+                    <!-- Basic Inputs-->
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="section">
+                          <label class="field prepend-icon">
+                            <input id="tooltip1" maxlength="30" type="text" name="tooltip1"  id="nombre" required [(ngModel)]="model.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" class="gui-input">
+                            <b class="tooltip tip-right-top">
+                              <em> Nombre de la talla.</em>
+                            </b>
+                            <label for="tooltip1" class="field-icon"><i class="fa fa-flag"></i></label>
+                          </label>
+                          <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+                             Se necesita un nombre de talla
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="section">
+                            <label class="field prepend-icon">
+                              <textarea id="descripcion" required name="descripcion" [(ngModel)]="model.descripcion" #descripcion="ngModel" placeholder="Descripción de la talla" class="gui-textarea"></textarea>
+                              <label for="descripcion" class="field-icon"><i class="fa fa-descripcions"></i></label>
+                              <!-- <span class="input-footer"><strong>Hint:</strong>Don't be negative or off topic! just be awesome...</span> -->
+                            </label>
+                            <div [hidden]="descripcion.valid || descripcion.pristine" class="alert alert-danger">
+                                Se necesita un descripción de la talla
+                             </div>
+                          </div>
+                        
+                    </div>
+                      
+                    </div>
+                    
+                    
+                    <!-- .tagline-->
+                
+                    <div class="panel-footer ">
+                      <button type="button" class="btn btn-success" [disabled]="!heroForm.form.valid"(click)="crearElemento()">Guardar</button>
+                      
+                      <a (click)="cancel()" class="btn btn-danger" style="margin-left: 20px;" >Cancelar</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- begin: .tray-right-->
+        
+      </section>
+    </section>
+    </div>
+    
+  

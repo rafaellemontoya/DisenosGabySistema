@@ -1,0 +1,204 @@
+<div class="admin-elements-page">
+  <!-- Start: Content-Wrapper-->
+  <section id="content_wrapper">
+      <!-- Start: Topbar-Dropdown-->
+
+      <!-- Start: Topbar-->
+      <header id="topbar" class="alt">
+        <div class="topbar-left">
+          <ol class="breadcrumb">
+            
+            <li class="crumb-icon"><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="crumb-link"><a href="index.html">clasificación</a></li>
+            <li class="crumb-trail">Nuevo clasificación</li>
+          </ol>
+        </div>
+        
+      </header>
+      <!-- Begin: Content-->
+      <section id="content" class="table-layout animated fadeIn">
+        <!-- begin: .tray-center-->
+        <div class="tray tray-center">
+          <div class="mw1000 center-block">
+            <!-- Begin: Content Header-->
+            <div class="content-header">
+              <h2> <b>Nuevo clasificación</b> 
+              </h2>
+              <p class="lead">Llena el formulario para agregar el clasificación</p>
+            </div>
+            
+  
+  
+            <!-- Begin: Admin Form-->
+            <div class="admin-form">
+              <div  class="panel heading-border">
+                <!-- Panel guardado-->
+                <div [hidden]="!submitted" class="panel-body bg-light animated fadeIn">
+                    
+  
+                <div class="alert alert-success alert-dismissable mb30">
+                    <!-- <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button> -->
+                    <h3 class="mt5">clasificación guardado exitosamente!</h3>
+                    <p>clasificación añadido con éxito.</p><br>
+                    <div class="element-groups-sm-custom"><a routerLink="/clasificaciones" class="btn btn-white">Continuar</a><button type="button" (click)="submitted=false; heroForm.reset()" class="btn btn-default">nuevo clasificación</button></div>
+                  </div>
+    
+    
+                </div>
+                <!-- Panel formulario-->
+                <div [hidden]="submitted" class="panel-body bg-light">
+                  <form (ngSubmit)="newHero()" (keydown.enter)="$event.preventDefault()" #heroForm="ngForm">
+                    <div id="spy1" class="section-divider mb40"><span>Información general</span></div>
+                    <!-- .section-divider-->
+                    <!-- Basic Inputs-->
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="section">
+                          <label class="field prepend-icon">
+                            <input id="tooltip1" type="text" name="tooltip1"  id="nombre" required [(ngModel)]="model.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" class="gui-input">
+                            <b class="tooltip tip-right-top">
+                              <em> Nombre de la clasificación.</em>
+                            </b>
+                            <label for="tooltip1" class="field-icon"><i class="fa fa-flag"></i></label>
+                          </label>
+                          <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+                             Se necesita un nombre de clasificación
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="section">
+                            <label class="field prepend-icon">
+                              <textarea id="descripcion" required name="descripcion" [(ngModel)]="model.descripcion" #descripcion="ngModel" placeholder="Descripción del clasificación" class="gui-textarea"></textarea>
+                              <label for="descripcion" class="field-icon"><i class="fa fa-descripcions"></i></label>
+                              <!-- <span class="input-footer"><strong>Hint:</strong>Don't be negative or off topic! just be awesome...</span> -->
+                            </label>
+                            <div [hidden]="descripcion.valid || descripcion.pristine" class="alert alert-danger">
+                                Se necesita un descripción de clasificación
+                             </div>
+                          </div>
+                        
+                    </div>
+                      
+                    </div>
+                   
+                    <!-- Input Formats-->
+                    <div class="row">
+                      
+                    
+                      
+                    </div>
+                    <!-- Multi Selects-->
+         
+                    <div id="spy3" class="section-divider mv40"><span>Imágenes</span></div>
+                    <div [hidden]="!img1sub">
+                      <h2>{{mensajeErrorImg1}}</h2>
+                      
+                    </div>
+                    <!-- .section-divider-->
+                    <!-- File Uploaders-->
+  
+                    <!-- imagen 1 -->
+                    <div class="row">
+                        <div class="col-md-6">
+                          <div class="section">
+                              <div class="text-center"><b style="color: #e9573f" >270 de ancho x 318 de alto</b></div>
+                            <label class="field prepend-icon append-button file"><span class="button btn-primary">Seleccionar</span>
+                              <input id="file1" type="file"  name="file1" (change)="getFile($event) " onchange="document.getElementById('up1').value = this.value;" class="gui-file">
+                              <input id="up1"  type="text" placeholder="Imagen lista clasificaciones" class="gui-input">
+                              <label class="field-icon"><i class="fa fa-upload"></i></label>
+                            </label>
+  
+  
+  
+  
+                            <div [hidden]="!imgError1" class="alert alert-danger alert-dismissable">
+                              <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button><i class="fa fa-remove pr10"></i><strong>Error en la imagen!</strong> {{mensajeErrorImg1}}.
+                            </div>
+  
+  
+  
+                            <div [hidden]="!estadoCargaImg1" class="progress mt10">
+                              <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': porcentajeCargaImg1 + '%'}"  [ngClass]="claseCargaImg1">{{porcentajeCargaImg1}}%</div>
+                            </div>
+  
+                          </div>
+                        </div>
+                        
+
+                      <!-- imagen 2 -->
+
+                      <div class="col-md-6">
+                        <div class="section">
+
+                            <div class="text-center"><b style="color: #e9573f" >870 de ancho x 294 de alto</b></div>
+                          <label class="field prepend-icon append-button file"><span class="button btn-primary">Seleccionar</span>
+                            <input id="file2" type="file"  name="file2" (change)="getFile($event) " onchange="document.getElementById('up2').value = this.value;" class="gui-file">
+                              <input id="up2"  type="text" placeholder="Imagen título de clasificación" class="gui-input">
+                            <label class="field-icon"><i class="fa fa-upload"></i></label>
+                          </label>
+  
+  
+  
+                          <div [hidden]="!imgError2" class="alert alert-danger alert-dismissable">
+                            <button type="button" data-dismiss="alert" aria-hidden="true" class="close"></button><i class="fa fa-remove pr10"></i><strong>Error en la imagen!</strong> {{mensajeErrorImg2}}.
+                          </div>
+  
+  
+  
+                          <div [hidden]="!estadoCargaImg2" class="progress mt10">
+                            <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': porcentajeCargaImg2 + '%'}"  [ngClass]="claseCargaImg2">{{porcentajeCargaImg2}}%</div>
+                          </div>
+  
+                        </div>
+                      </div>
+                      <!-- imagen 3 -->
+                      
+                    </div>
+                    <!-- imagen 4 -->
+
+                    
+     
+  
+                   
+                    <div class="section button-list hidden">
+                      <input type="submit" value="Button normal" class="button">
+                      <button class="button btn-primary">Button primary</button><a href="javascript:;" class="button btn-rounded">Button rounded</a><a href="javascript:;" class="button btn-primary btn-rounded">Primary rounded</a>
+                    </div>
+                    <div class="section button-list hidden">
+                      <input type="submit" value="Pushed normal" class="button pushed">
+                      <button class="button pushed btn-primary">Pushed primary</button><a href="javascript:;" class="button pushed btn-rounded">Pushed round</a><a href="javascript:;" class="button pushed btn-primary btn-rounded">Pushed round</a>
+                    </div>
+                    <div class="section button-list hidden">
+                      <button class="button button-left">Button Left</button>
+                      <button class="button button-right">Button right</button><a href="javascript:;" class="button btn-primary button-left">Primary Left</a><a href="javascript:;" class="button btn-primary button-right">Primary Right</a>
+                    </div>
+                    <div class="section button-list hidden">
+                      <button class="button btn-pointed button-left">Pointed Left</button>
+                      <button class="button btn-pointed button-right">Pointed right</button><a href="javascript:;" class="button btn-pointed btn-primary button-left">Pointed Left</a><a href="javascript:;" class="button btn-pointed btn-primary button-right">Pointed Right</a>
+                    </div>
+                    <div class="section-divider hidden"><span class="bg-light">Simple Pricing Grid</span></div>
+                    <!-- .tagline-->
+                    
+                    
+                    
+                    <!-- .tagline-->
+                
+                    <div class="panel-footer ">
+                      <button type="button" class="btn btn-success" [disabled]="!heroForm.form.valid"(click)="newHero()">Guardar</button>
+                      
+                      <a (click)="cancel()" class="btn btn-danger" style="margin-left: 20px;" >Cancelar</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- begin: .tray-right-->
+        
+      </section>
+    </section>
+    </div>
+    
+  
